@@ -1,0 +1,39 @@
+labelApp: nginx-2
+containers:
+- deploymentname: deployment-1
+  podname: nginx-c-1
+  volumename: config-volume-1
+  configmapname: nginx-config-3-1
+- deploymentname: deployment-2
+  podname: nginx-c-2
+  volumename: config-volume-2
+  configmapname: nginx-config-3-2
+- deploymentname: deployment-3
+  podname: nginx-c-3
+  volumename: config-volume-3
+  configmapname: nginx-config-3-3
+
+replicaCount: 3
+restartPolicy: Never
+# Evaluated by the post-install hook
+sleepyTime: "10"
+index: >-  
+    <h1>Hello</h1>
+    <p>This is a test</p>
+image:
+    repository: nginx
+    tag: latest
+    pullPolicy: IfNotPresent
+service:
+    annotations: {}
+    clusterIP: ""
+    externalIPs: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    type: LoadBalancer
+    port: 8888
+    nodePort: ""
+podAnnotations: {}
+resources: {}
+nodeSelector: {}
+
