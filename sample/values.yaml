@@ -4,14 +4,26 @@ containers:
   podname: nginx-c-1
   volumename: config-volume-1
   configmapname: nginx-config-3-1
+  labelApp: nginx-2
+  replicaCount: 3
+  repository: nginx
+  tag: latest
 - deploymentname: deployment-2
   podname: nginx-c-2
   volumename: config-volume-2
   configmapname: nginx-config-3-2
+  labelApp: nginx-2
+  replicaCount: 3
+  repository: nginx
+  tag: latest
 - deploymentname: deployment-3
   podname: nginx-c-3
   volumename: config-volume-3
   configmapname: nginx-config-3-3
+  labelApp: nginx-2
+  replicaCount: 3
+  repository: nginx
+  tag: latest
 
 replicaCount: 3
 restartPolicy: Never

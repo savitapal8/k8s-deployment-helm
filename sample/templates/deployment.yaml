@@ -1,35 +1,34 @@
-{{ range .Values.containers }}
+{{ range $eachcontainer := .Values.containers }}
 ---
-apiVersion: apps/v2
+apiVersion: app/v2
 kind: Deployment
 metadata:
-  name: {{ .deploymentname }}
+  name: {{ $eachcontainer.deploymentname }}
   labels:
-    app: {{ .Values.labelApp }}
+    app: {{ $eachcontainer.labelApp }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ $eachcontainer.replicaCount }}
   selector:
     matchLabels:
       labels:
-        app: {{ .Values.labelApp }}
+        app: {{ $eachcontainer.labelApp }}
   template:
     metadata:
       labels:
-        app: {{ .Values.labelApp }}
+        app: {{ $eachcontainer.labelApp }}
     spec:
       containers:
-        - name: {{ .podname }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        - name: {{ $eachcontainer.podname }}
+          image: "{{ $eachcontainer.repository }}:{{ $eachcontainer.tag }}"
           ports:
           - name: http
             containerPort: 80
             protocol: TCP
           volumeMounts:
-          - name: {{ .volumename }}
+          - name: {{ $eachcontainer.volumename }}
             mountPath: /usr/share/nginx/html
       volumes:
-        - name: {{ .volumename }}
+        - name: {{ $eachcontainer.volumename }}
           configMap:
-                  name: {{ .configmapname }}
-{{- end }}
+                  name: {{ $eachcontainer.configmapname }}
+{{- end}}
