@@ -1,6 +1,6 @@
 {{ range $eachcontainer := .Values.containers }}
 ---
-apiVersion: app/v2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ $eachcontainer.deploymentname }}
@@ -10,7 +10,6 @@ spec:
   replicas: {{ $eachcontainer.replicaCount }}
   selector:
     matchLabels:
-      labels:
         app: {{ $eachcontainer.labelApp }}
   template:
     metadata:
