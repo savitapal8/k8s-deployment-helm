@@ -6,7 +6,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app: nginx-2
+    app: {{ $eachcontainer.labelApp }}
   name: {{ $eachcontainer.configmapname }}
   namespace: default
 {{- end}}
