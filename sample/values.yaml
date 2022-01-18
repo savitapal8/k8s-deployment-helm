@@ -1,29 +1,39 @@
-labelApp: nginx-2
+labelApp: nginx-tf
+serviceName: nginx-service-tf
 containers:
 - deploymentname: deployment-tf-1
-  podname: nginx-c-1
+  podname: nginx-ct-tf-1
   volumename: config-volume-tf-1
   configmapname: nginx-config-tf-1
-  labelApp: nginx-2
+  labelApp: nginx-tf
   replicaCount: 3
   repository: nginx
   tag: latest
+  index: >-  
+    <h1>Hello</h1>
+    <p>This is a ConfigMap1</p>
 - deploymentname: deployment-tf-2
-  podname: nginx-c-2
+  podname: nginx-ct-tf-2
   volumename: config-volume-tf-2
   configmapname: nginx-config-tf-2
-  labelApp: nginx-2
+  labelApp: nginx-tf
   replicaCount: 3
   repository: nginx
   tag: latest
+  index: >-  
+    <h1>Hello</h1>
+    <p>This is a ConfigMap2</p>
 - deploymentname: deployment-tf-3
-  podname: nginx-c-3
+  podname: nginx-ct-tf-3
   volumename: config-volume-tf-3
   configmapname: nginx-config-tf-3
-  labelApp: nginx-2
+  labelApp: nginx-tf
   replicaCount: 3
   repository: nginx
   tag: latest
+  index: >-  
+    <h1>Hello</h1>
+    <p>This is a ConfigMap3</p>
 
 replicaCount: 3
 restartPolicy: Never
