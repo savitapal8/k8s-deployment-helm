@@ -1,0 +1,12 @@
+{{ range $eachcontainer := .Values.containers }}
+---
+apiVersion: v1
+data:
+  index.html: {{ $eachcontainer.index }}
+kind: ConfigMap
+metadata:
+  labels:
+    app: nginx-2
+  name: {{ $eachcontainer.configmapname }}
+  namespace: default
+{{- end}}
