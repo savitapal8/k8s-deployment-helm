@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service-tf
+  name: {{ .Values.serviceName }}
   labels:
     app: {{ .Values.labelApp }}
 spec:
